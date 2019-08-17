@@ -9,12 +9,12 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用sqlmap爆库1.检测是否可以注入  2.爆库 sqlmap.py -u http://172.16.13.36/sql/union.php?id=1 –dbs   得到库名mysql performance_schema information_schema test 我们爆test数据库 3.爆表 sqlmap.py -u http://172.16.13.36/sql/union.ph">
+  <meta name="description" content="使用sqlmap爆库SQL注入攻击(SQL injection attack)是攻击者把SQL语句插入到应用程序的输入数据中，或web表单的输入域，总之就是欺骗服务器执行恶意SQL语句。 SQL注入攻击是黑客对数据库进行攻击的常用手段之一。一次成功的SQL注入，允许你读取数据库中的敏感数据、修改数据库、执行数据库的管理员操作等。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="You">
 <meta property="og:url" content="http://yoursite.com/2019/08/17/使用sqlmap爆库/index.html">
 <meta property="og:site_name" content="You">
-<meta property="og:description" content="使用sqlmap爆库1.检测是否可以注入  2.爆库 sqlmap.py -u http://172.16.13.36/sql/union.php?id=1 –dbs   得到库名mysql performance_schema information_schema test 我们爆test数据库 3.爆表 sqlmap.py -u http://172.16.13.36/sql/union.ph">
+<meta property="og:description" content="使用sqlmap爆库SQL注入攻击(SQL injection attack)是攻击者把SQL语句插入到应用程序的输入数据中，或web表单的输入域，总之就是欺骗服务器执行恶意SQL语句。 SQL注入攻击是黑客对数据库进行攻击的常用手段之一。一次成功的SQL注入，允许你读取数据库中的敏感数据、修改数据库、执行数据库的管理员操作等。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://wx4.sinaimg.cn/mw690/007WZes1gy1g62si895acj30pm07mdg7.jpg">
 <meta property="og:image" content="https://wx4.sinaimg.cn/mw690/007WZes1gy1g62si9vthxj30pq0dc75c.jpg">
@@ -22,10 +22,10 @@
 <meta property="og:image" content="https://wx3.sinaimg.cn/mw690/007WZes1gy1g62sidxgxfj30w006z0sy.jpg">
 <meta property="og:image" content="https://wx2.sinaimg.cn/mw690/007WZes1gy1g62sifguqhj30tb09f0t4.jpg">
 <meta property="og:image" content="https://wx1.sinaimg.cn/mw690/007WZes1gy1g62sihaadrj30ho05rmx9.jpg">
-<meta property="og:updated_time" content="2019-08-17T09:20:55.255Z">
+<meta property="og:updated_time" content="2019-08-17T09:35:01.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="You">
-<meta name="twitter:description" content="使用sqlmap爆库1.检测是否可以注入  2.爆库 sqlmap.py -u http://172.16.13.36/sql/union.php?id=1 –dbs   得到库名mysql performance_schema information_schema test 我们爆test数据库 3.爆表 sqlmap.py -u http://172.16.13.36/sql/union.ph">
+<meta name="twitter:description" content="使用sqlmap爆库SQL注入攻击(SQL injection attack)是攻击者把SQL语句插入到应用程序的输入数据中，或web表单的输入域，总之就是欺骗服务器执行恶意SQL语句。 SQL注入攻击是黑客对数据库进行攻击的常用手段之一。一次成功的SQL注入，允许你读取数据库中的敏感数据、修改数据库、执行数据库的管理员操作等。">
 <meta name="twitter:image" content="https://wx4.sinaimg.cn/mw690/007WZes1gy1g62si895acj30pm07mdg7.jpg">
   
   
@@ -186,7 +186,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="使用sqlmap爆库"><a href="#使用sqlmap爆库" class="headerlink" title="使用sqlmap爆库"></a>使用sqlmap爆库</h1><p>1.检测是否可以注入</p>
+        <h1 id="使用sqlmap爆库"><a href="#使用sqlmap爆库" class="headerlink" title="使用sqlmap爆库"></a>使用sqlmap爆库</h1><p>SQL注入攻击(SQL injection attack)是攻击者把SQL语句插入到应用程序的输入数据中，或web表单的输入域，总之就是欺骗服务器执行恶意SQL语句。</p>
+<p>SQL注入攻击是黑客对数据库进行攻击的常用手段之一。一次成功的SQL注入，允许你读取数据库中的敏感数据、修改数据库、执行数据库的管理员操作等。</p>
+<a id="more"></a>
+
+<p>SQL注入是数据库驱动型网站所面临的普遍问题，SQL注入漏洞常见于PHP和ASP应用：</p>
+<blockquote>
+<p>输入不信任的数据<br>SQL语句是动态构建的</p>
+</blockquote>
+<p>1.检测是否可以注入</p>
 <p><img src="https://wx4.sinaimg.cn/mw690/007WZes1gy1g62si895acj30pm07mdg7.jpg" alt></p>
 <p>2.爆库</p>
 <p>sqlmap.py -u <a href="http://172.16.13.36/sql/union.php?id=1" target="_blank" rel="noopener">http://172.16.13.36/sql/union.php?id=1</a> –dbs</p>
@@ -213,6 +221,16 @@
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/14/第一次测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
