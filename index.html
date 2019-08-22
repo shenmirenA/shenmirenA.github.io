@@ -178,25 +178,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h1 id="title-安全架构技术"><a href="#title-安全架构技术" class="headerlink" title="title: 安全架构技术"></a>title: 安全架构技术</h1><h4 id="一、防火墙部署"><a href="#一、防火墙部署" class="headerlink" title="一、防火墙部署"></a>一、防火墙部署</h4><p>1.配置路由模式的防火墙</p>
-<p>网络拓扑图为：</p>
-<p><img src="https://wx3.sinaimg.cn/mw690/007WZes1gy1g68j5er5csj30sw08474q.jpg" alt></p>
-<p>配置R1的ip地址和路由条目：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">R1(config)#int f0/0</span><br><span class="line">R1(config-if)#ip add	192.168.229.2 255.255.255.0</span><br><span class="line">R1(config-if)#no shutdown</span><br><span class="line">R1(config)#int f0/1</span><br><span class="line">R1(config-if)#ip add	192.168.1.1 255.255.255.0</span><br><span class="line">R1(config-if)#no shutdown</span><br><span class="line">R1(config)#ip route 192.168.2.0 255.255.255.0 192.168.1.2</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://wx3.sinaimg.cn/mw690/007WZes1gy1g68j5er5csj30sw08474q.jpg" alt></p>
-<p>配置R2的ip地址和路由条目：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R2(config)#int f0/0</span><br><span class="line">R2(config-if)#ip add	192.168.2.1 255.255.255.0</span><br><span class="line">R2(config-if)#no shut</span><br><span class="line">R2(config)#ip route 0.0.0.0 0.0.0.0 192.168.2.2</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://wx3.sinaimg.cn/mw690/007WZes1gy1g68j5er5csj30sw08474q.jpg" alt></p>
-<p>配置防火墙:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">pix1(config)#int e1</span><br><span class="line"></span><br><span class="line">pix1(config-if)#nameif inside</span><br><span class="line"></span><br><span class="line">pix1(config-if)#security-level 100</span><br><span class="line"></span><br><span class="line">pix1(config-if)#ip add 192.168.1.2 255.255.255.0</span><br><span class="line"></span><br><span class="line">pix1(config-if)#no shut</span><br><span class="line"></span><br><span class="line">pix1(config)#int e0</span><br><span class="line"></span><br><span class="line">pix1(config-if)#nameif outside</span><br><span class="line"></span><br><span class="line">pix1(config-if)#security-level 0</span><br><span class="line"></span><br><span class="line">pix1(config-if)#ip add 192.1682.2 255.255.255.0</span><br><span class="line"></span><br><span class="line">pix1(config-if)#no shut</span><br><span class="line"></span><br><span class="line">pix1(config)#route inside 192.168.229.0 255.255.255.0 192.168.1.1</span><br><span class="line"></span><br><span class="line">pix1(config)#route outside 0.0.0.0 0.0.0.0 192.168.2.1</span><br><span class="line"></span><br><span class="line">pix1(config)#access-list 1 permit icmp any any</span><br><span class="line"></span><br><span class="line">pix1(config)#access-group 1 in interface outside</span><br><span class="line"></span><br><span class="line">pix1(config)#nat (inside) 1 192.168.229.0 255.255.255.0</span><br><span class="line"></span><br><span class="line">pix1(config)#global (outside) 1 interface</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://wx1.sinaimg.cn/mw1024/007WZes1gy1g68pqi6pe4j30rm0b6tcv.jpg" alt></p>
-<p>我们在PC机上可以ping通外网。</p>
-<p><img src="https://wx2.sinaimg.cn/mw1024/007WZes1gy1g68pu88a6zj30uz04bdfz.jpg" alt></p>
-<p>外网设备无法ping通内网设备。防火墙配置完成。</p>
-<h4 id="二、入侵检测系统-IDS"><a href="#二、入侵检测系统-IDS" class="headerlink" title="二、入侵检测系统(IDS)"></a>二、入侵检测系统(IDS)</h4><h4 id="三、入侵防御系统-IPS"><a href="#三、入侵防御系统-IPS" class="headerlink" title="三、入侵防御系统(IPS)"></a>三、入侵防御系统(IPS)</h4><h4 id="四、UTM"><a href="#四、UTM" class="headerlink" title="四、UTM"></a>四、UTM</h4>
+<h1 id="title-安全架构技术"><a href="#title-安全架构技术" class="headerlink" title="title: 安全架构技术"></a>title: 安全架构技术</h1><p>计算机网络安全体系结构是由硬件网络、通信软件以及操作系统构成的，对于一个系统而言，首先要以硬件电路等物理设备为载体，然后才能运 行载体上的功能程序。通过使用路由器、集线器、交换机、网线等网络设备，用户可以搭建自己所需要的通信网络，对于小范围的无线局域网而言，人们可以使用这 些设备搭建用户需要的通信网络，最简单的防护方式是对无线路由器设置相应的指令来防止非法用户的入侵，这种防护措施可以作为一种通信协议保护，目前广泛采 用WPA2加密协议实现协议加密，用户只有通过使用密匙才能对路由器进行访问，通常可以将驱动程序看作为操作系统的一部分，经过注册表注册后，相应的网络 通信驱动接口才能被通信应用程序所调用。网络安全通常是指网络系统中的硬件、软件要受到保护，不能被更改、泄露和破坏，能够使整个网络得到可持续的稳定运 行，信息能够完整的传送，并得到很好的保密。因此计算机网络安全设计到网络硬件、通信协议、加密技术等领域。</p>
       
     </div>
     
@@ -208,6 +190,10 @@
       
       <div class="clearfix"></div>
     </div>
+      
+        <p class="article-more-link">
+          <a  href="/2019/08/22/黄仁飞8.22/#more">more >></a>
+        </p>
       
     
   </div>
